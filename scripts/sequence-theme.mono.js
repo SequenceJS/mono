@@ -1,6 +1,6 @@
 /**
  * Theme Name: Mono
- * Version: 1.0.0
+ * Version: 1.1.0
  * Theme URL: http://sequencejs.com/themes/mono/
  *
  * A minimal but colorful slider for showcasing one large product per slide
@@ -26,7 +26,8 @@ var sequenceElement = document.getElementById("sequence");
 var options = {
   animateCanvas: false,
   phaseThreshold: false,
-  reverseWhenNavigatingBackwards: true
+  reverseWhenNavigatingBackwards: true,
+  preloader: true
 }
 
 // Launch Sequence on the element, and with the options we specified above

@@ -1,6 +1,6 @@
 /**
  * Theme Name: Mono
- * Version: 1.0.0
+ * Version: 1.1.0
  * Theme URL: http://sequencejs.com/themes/mono/
  *
  * A minimal but colorful slider for showcasing one large product per slide
@@ -40,6 +40,15 @@ html,
   background-color: #2A93BC;
   @include prefixed(transition-duration, ".5s");
   @include prefixed(transition-property, "background-color");
+
+  .seq-preloader {
+    background-color: #2A93BC;
+    text-align: left;
+  }
+
+  .seq-preload-circle {
+    fill: #fff;
+  }
 
   .seq-canvas,
   .seq-canvas > * {
