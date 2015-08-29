@@ -1,0 +1,289 @@
+/**
+ * Theme Name: Mono
+ * Version: 1.0.0
+ * Theme URL: http://sequencejs.com/themes/mono/
+ *
+ * A minimal but colorful slider for showcasing one large product per slide
+ *
+ * This theme is powered by Sequence.js - The
+ * responsive CSS animation framework for creating unique sliders,
+ * presentations, banners, and other step-based applications.
+ *
+ * Author: Ian Lunn
+ * Author URL: http://ianlunn.co.uk/
+ *
+ * Theme License: http://sequencejs.com/licenses/#free-theme
+ * Sequence.js Licenses: http://sequencejs.com/licenses/
+ *
+ * Copyright © 2015 Ian Lunn Design Limited unless otherwise stated.
+ */
+
+@import "partials/mixins";
+@import url(https://fonts.googleapis.com/css?family=Exo+2:900);
+
+body,
+html,
+.seq {
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
+.seq {
+  position: relative;
+  overflow: hidden;
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+  background-color: #2A93BC;
+  @include prefixed(transition-duration, ".5s");
+  @include prefixed(transition-property, "background-color");
+
+  .seq-canvas,
+  .seq-canvas > * {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .seq-canvas > * {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+
+  &.seq-step1 {
+    background-color: #2A93BC;
+  }
+
+  &.seq-step2 {
+    background-color: #6BC85E;
+  }
+
+  &.seq-step3 {
+    background-color: #45367E;
+  }
+
+  .seq-feature {
+    width: 70%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .seq-valign {
+    /* Remove 4px gap to allow consistent valign */
+    font-size: 0;
+
+    &:before {
+      /* Ghost element */
+      content: "";
+      height: 100%;
+    }
+
+    &:before,
+    > .seq-vcenter {
+      /* Vertically align the ghost and desired elements */
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    > .seq-vcenter {
+      /* Reset font-size on valigned elements */
+      font-size: 16px;
+    }
+  }
+
+  .seq-title {
+    margin: 0;
+    font-size: 1em;
+    font-family: 'Exo 2', sans-serif;
+    text-transform: uppercase;
+    opacity: 0;
+    @include prefixed(transform, "translateX(50px) translateZ(0)");
+    @include prefixed(transition-duration, ".5s");
+    @include prefixed(transition-property, "opacity, transform");
+  }
+
+  .seq-feature {
+    @include prefixed(transform, "translateZ(0) scale(0)");
+    @include prefixed(transition-duration, ".5s");
+    @include prefixed(transition-property, "transform, opacity");
+  }
+
+  .seq-in {
+    .seq-title {
+      opacity: 1;
+      @include prefixed(transform, "translateX(0) translateZ(0)");
+    }
+
+    .seq-feature {
+      @include prefixed(transform, "translateZ(0) scale(1)");
+    }
+  }
+
+  .seq-out {
+    .seq-title {
+      opacity: 0;
+      @include prefixed(transform, "translateX(-50px) translateZ(0)");
+    }
+
+    .seq-feature {
+      @include prefixed(transform, "translateZ(0) scale(1)");
+      opacity: 0;
+    }
+  }
+
+  .seq-nav {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 0;
+    right: 0;
+    max-width: 640px;
+    width: 100%;
+    border: none;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  &.seq-active {
+    /* Show navigation when JS is enabled */
+    .seq-nav {
+      display: block;
+    }
+  }
+
+  .seq-next,
+  .seq-prev {
+    position: absolute;
+    margin-top: -20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    padding: .75em;
+    cursor: pointer;
+    color: white;
+    font-size: .75em;
+    text-transform: uppercase;
+    opacity: .7;
+    @include prefixed(transition-duration, ".25s");
+    @include prefixed(transition-property, "opacity");
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .seq-next {
+    right: .625em;
+  }
+
+  .seq-prev {
+    left: .625em;
+  }
+
+  .seq-pagination {
+    display: none;
+    margin: 0 1em;
+    padding: 0;
+
+    li {
+      position: relative;
+      list-style: none;
+      display: inline-block;
+      vertical-align: middle;
+      width: 40px;
+      height: 40px;
+      margin: 0 .5em;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 6px;
+        height: 6px;
+        margin-top: .5em;
+        border-radius: 50%;
+        background: white;
+        opacity: 0;
+
+        @include prefixed(transition-duration, ".25s");
+        @include prefixed(transition-property, "opacity");
+      }
+    }
+
+    .seq-current:before {
+      opacity: .7;
+    }
+
+    img,
+    a {
+      display: block;
+      border: none;
+    }
+  }
+
+  @media only screen and (min-width: 460px) {
+
+    .seq-feature {
+      max-height: 50vh;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  @media only screen and (min-width: 320px) and (min-height: 320px) {
+    .seq-canvas > * {
+      bottom: 80px;
+      bottom: 5rem;
+    }
+
+    .seq-title {
+      font-size: 1.4em;
+    }
+
+    .seq-nav {
+      /*
+       * Position the nav across the bottom
+       */
+      top: auto;
+      bottom: 2.5em;
+    }
+
+    .seq-next,
+    .seq-prev,
+    .seq-pagination {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 0;
+    }
+
+    .seq-pagination {
+      /*
+       * Show the pagination
+       */
+      display: inline-block;
+    }
+  }
+
+  @media only screen and (min-height: 480px) {
+    .seq-feature {
+      /*
+       * The image can now become its full native height
+       */
+      max-height: 100%;
+    }
+  }
+}

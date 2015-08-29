@@ -1,0 +1,18 @@
+{
+  "name": "seq-theme-mono",
+  "version": "1.0.0",
+  "keywords": [
+    "sequence",
+    "sequencejs",
+    "sequence theme",
+    "sequence.js",
+    "sequence.js theme",
+    "basic slider",
+    "single product slider"
+  ],
+  "dependencies": {
+    "sequencejs": "2.1.0",
+    "hammerjs": "2.0.4",
+    "imagesloaded": "3.1.5"
+  }
+}
